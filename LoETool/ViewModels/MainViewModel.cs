@@ -82,7 +82,14 @@ public class MainViewModel : ViewModelBase
 
     // Commmands
 
-    public override void Cancel() => Application.Current.Shutdown();
+    public override void Cancel()
+    {
+        if (MessageBox.Show("Exit Library of Erudin Tool?", "Exit Program?", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+        {
+            return;
+        }
+        Application.Current.Shutdown();
+    }
 
     public override void Ok() { }
 
